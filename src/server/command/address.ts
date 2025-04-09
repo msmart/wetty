@@ -13,9 +13,10 @@ export function address(
     return `${escapeShell(remoteUser)}@${host}`;
   }
   if (!_.isUndefined(headers.referer)) {
-    const match = headers.referer.match('.+/ssh/([^/]+)$');
+    // Updated regex to better match the URL path pattern
+    const match = headers.referer.match(/\/ssh\/([^/?]+)/);
     if (match) {
-      const username = escapeShell(match[1].split('?')[0]);
+      const username = escapeShell(match[1]);
       return `${username}@${host}`;
     }
   }

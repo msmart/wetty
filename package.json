@@ -227,5 +227,5 @@
     "Tri Nguyen <tri@tridnguyen.com>",
     "Vamshi K Ponnapalli <vamship@users.noreply.github.com>"
   ],
-  "packageManager": "yarn@3.2.2"
+  "packageManager": "yarn@1.22.22"
 }

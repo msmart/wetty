@@ -51,6 +51,13 @@ export function getCommand(
   });
   if (!allowRemoteHosts) {
     args.host = sshAddress;
+  } else {
+    const usernameMatch = sshAddress.match(/^([^@]+)@/);
+    const urlHost = url.parse(headers.referer || '', true).query.host;
+
+    if (usernameMatch && typeof urlHost === 'string' && !urlHost.includes('@')) {
+      args.host = `${usernameMatch[1]}@${urlHost}`;
+    }
   }
 
   return [
